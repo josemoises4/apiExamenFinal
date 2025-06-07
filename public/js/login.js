@@ -1,0 +1,22 @@
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const contrasena = document.getElementById("contrasena").value;
+
+  const respuesta = await fetch("/api/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, contrasena })
+  });
+
+  const resultado = await respuesta.json();
+
+  if (respuesta.ok) {
+    alert("Bienvenido, acceso concedido");
+    // Puedes redirigir a una página protegida si lo deseas
+    // window.location.href = "/dashboard.html";
+  } else {
+    alert(resultado.error || "Error en el inicio de sesión");
+  }
+});
