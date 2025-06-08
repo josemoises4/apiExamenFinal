@@ -14,8 +14,10 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
   if (respuesta.ok) {
     alert("Bienvenido, acceso concedido");
-    // Puedes redirigir a una página protegida si lo deseas
-    // window.location.href = "/dashboard.html";
+    // Guardar info del usuario (ajusta según respuesta del servidor)
+    localStorage.setItem('usuario', JSON.stringify(resultado.usuario));
+    // Redirigir a FrmCategoria.html
+    window.location.href = "FrmCategoria.html";
   } else {
     alert(resultado.error || "Error en el inicio de sesión");
   }

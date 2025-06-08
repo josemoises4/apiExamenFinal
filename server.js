@@ -8,6 +8,8 @@ const conectar = require("./src/util/Conexion");
 const usuarioRoutes = require("./src/routes/usuario.routes");
 const inicioRoutes = require("./src/routes/inicio.routes");
 const authRoutes = require("./src/routes/auth.routes");
+const categoriaRoutes = require('./src/routes/categoria.routes');
+const articuloRoutes = require('./src/routes/articulo.routes');
 
 const app = express();
 
@@ -23,6 +25,8 @@ conectar();
 app.use("/api/usuarios", usuarioRoutes);
 app.use("/", inicioRoutes);
 app.use("/api/login", authRoutes);
+app.use("/api/categoria", categoriaRoutes);
+app.use("/api/articulo", articuloRoutes);
 
 // Redirigir '/' a '/inicio'
 app.get("/", (req, res) => {
